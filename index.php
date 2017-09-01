@@ -2,7 +2,7 @@
 	$con = mysqli_connect("localhost","martog","martog","techno_farm");
 
 	if ($con->connect_error){
-		die("Connection failed: " . $conn->connect_error);
+		die("Connection failed: " . $con->connect_error);
 	} 
 ?>
 
@@ -59,7 +59,7 @@
 <?php
 	if(isset($_POST['contract'])){
 		if(!empty($_POST['type']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) && !empty($_POST['rent_per_decare']) && !empty($_POST['price'])){
-			
+
 			$type = $_POST['type'];
 			$start_date = $_POST['start_date'];
 			$end_date = $_POST['end_date'];
