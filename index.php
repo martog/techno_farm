@@ -49,6 +49,12 @@
 </html>
 
 <?php
+	$con = mysqli_connect("localhost","martog","martog","techno_farm");
+
+	if ($con->connect_error){
+		die("Connection failed: " . $conn->connect_error);
+	} 
+
 	if(isset($_POST['contract'])){
 		if(!empty($_POST['type']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) && !empty($_POST['rent_per_decare']) && !empty($_POST['price'])){
 			$type = $_POST['type'];
@@ -56,6 +62,15 @@
 			$end_date = $_POST['end_date'];
 			$rent_per_decare = $_POST['rent_per_decare'];
 			$price = $_POST['price'];
+
+			$sql = "INSERT INTO contracts (type, start_date, end_date, rent_per_decare, price) VALUES ('".$type."', ".$start_date.", ".$end_date.", ".$rent_per_decare.", ".$price.")";
+
+			if ($con->query($sql) === TRUE){
+				echo "New record created successfully";
+			}else{
+				echo "Error: " . $sql . "<br>" . $con->error;
+			}
+
 			echo "<p>good</p>";
 			echo $type, $start_date, $end_date, $rent_per_decare, $price;
 		}else{
