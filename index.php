@@ -35,19 +35,6 @@
 			<div id = "land" style = "display: none;">
 				<form method = "POST">
 					<input type = "number" name = "area" min = "0" placeholder = "Area"><br>
-					<p>Add this area to contract</p>
-					<select name="contracts_id">
-					<option>Contract ID</option>
-					<?php
-						$sql = "SELECT id FROM contracts";
-						$result = $con->query($sql);
-						if ($result->num_rows > 0) {
-							while($row = $result->fetch_assoc()) {
-								echo "<option value='".$row["id"]."'>". $row["id"]."</option>";
-							}
-						}
-					?>
-					</select><br>
 					<input type="submit" name="land">
 				</form>
 			</div>
@@ -72,6 +59,7 @@
 <?php
 	if(isset($_POST['contract'])){
 		if(!empty($_POST['type']) && !empty($_POST['start_date']) && !empty($_POST['end_date']) && !empty($_POST['rent_per_decare']) && !empty($_POST['price'])){
+			
 			$type = $_POST['type'];
 			$start_date = $_POST['start_date'];
 			$end_date = $_POST['end_date'];
@@ -92,16 +80,15 @@
 		}
 	}else if(isset($_POST['land'])){
 		if(!empty($_POST['area'])){
-			$area = $_POST['area'];
-			$contracts_id = $_POST['contracts_id'];
 
-			$sql = "INSERT INTO lands (area, contracts_id) VALUES (".$area.", ".$contracts_id.")";
+			$area = $_POST['area'];
+			$sql = "INSERT INTO lands (area) VALUES (".$area.")";
 			if ($con->query($sql) === TRUE){
 				echo "New record created successfully";
 			}else{
 				echo "Error: " . $sql . "<br>" . $con->error;
 			}
-			
+
 			echo $area;
 		}else{
 			echo "<p>Please fill all fields !";

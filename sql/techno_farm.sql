@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time:  1 септ 2017 в 11:46
+-- Generation Time:  1 септ 2017 в 18:26
 -- Версия на сървъра: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -42,8 +42,9 @@ CREATE TABLE `contracts` (
 --
 
 INSERT INTO `contracts` (`id`, `type`, `start_date`, `end_date`, `rent_per_decare`, `price`) VALUES
-(1, 'asd', '2017-09-06', '2017-09-13', 13.5, 99.9),
-(2, 'bbb', '2017-09-01', '2017-09-30', 33.5, 16.9);
+(6, 'asd', '2017-08-29', '2017-09-20', 12, 13.4),
+(7, 'asd', '2017-08-29', '2017-09-20', 12, 13.4),
+(8, 'new', '2017-09-14', '2017-09-21', 69.69, 123);
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE `landlords` (
   `fn_ln` varchar(60) NOT NULL,
   `phone_num` int(15) NOT NULL,
   `personal_num` int(15) NOT NULL,
-  `lands_id` int(11) NOT NULL
+  `lands_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -64,7 +65,8 @@ CREATE TABLE `landlords` (
 --
 
 INSERT INTO `landlords` (`id`, `fn_ln`, `phone_num`, `personal_num`, `lands_id`) VALUES
-(1, 'Martin Grigorov', 895566786, 1908232115, 1);
+(2, 'as dsa', 898988, 1989898989, 11),
+(3, 'hhh', 78978, 789789789, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,7 @@ INSERT INTO `landlords` (`id`, `fn_ln`, `phone_num`, `personal_num`, `lands_id`)
 CREATE TABLE `lands` (
   `id` int(11) NOT NULL,
   `area` double NOT NULL,
-  `contracts_id` int(11) NOT NULL
+  `contracts_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -83,9 +85,10 @@ CREATE TABLE `lands` (
 --
 
 INSERT INTO `lands` (`id`, `area`, `contracts_id`) VALUES
-(1, 55.6, 1),
-(2, 88, 1),
-(3, 34, 2);
+(4, 98989, 7),
+(10, 1111, NULL),
+(11, 2222, NULL),
+(12, 333.3, 8);
 
 --
 -- Indexes for dumped tables
@@ -119,17 +122,17 @@ ALTER TABLE `lands`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `landlords`
 --
 ALTER TABLE `landlords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `lands`
 --
 ALTER TABLE `lands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Ограничения за дъмпнати таблици
 --
