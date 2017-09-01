@@ -24,6 +24,8 @@
 				<button onclick = "show_contract_form()" type="button" class="btn btn-outline-primary">Add contract</button>
 				<button onclick = "show_land_form()" type="button" class="btn btn-outline-primary">Add land</button>
 				<button onclick = "show_landlord_form()" type="button" class="btn btn-outline-primary">Add landlord</button>
+				<a href = "pr_table.php" class="btn btn-outline-primary">Property table</a>
+				<a href = "rt_table.php" class="btn btn-outline-primary">Rent table</a>
 			</div><br><br>
 
 			<div id = "contract" style = "display: none; width: 30%;">
@@ -44,7 +46,7 @@
 
 			<div id = "land" style = "display: none;  width: 30%;">
 				<form method = "POST">
-					<input type = "number" class="form-control" name = "area" min = "0" placeholder = "Area"><br>
+					<input type = "number" class="form-control" step="0.01" name = "area" min = "0" placeholder = "Area"><br>
 					<input type="submit" class="btn btn-outline-success" name="land">
 				</form>
 			</div>
@@ -52,8 +54,8 @@
 			<div id = "landlord" style = "display: none;  width: 30%;">
 				<form method = "POST">
 					<input type = "text" class="form-control" name = "fn_ln" placeholder = "First and last name"><br>
-					<input type = "number" class="form-control" name = "phone_num" min = "0" placeholder = "Phone number"><br>
-					<input type = "number" class="form-control" name = "personal_num" min = "0" placeholder = "Personal number"><br>
+					<input type = "text" class="form-control" name = "phone_num" min = "0" placeholder = "Phone number"><br>
+					<input type = "text" class="form-control" name = "personal_num" min = "0" placeholder = "Personal number"><br>
 					<input type="submit" class="btn btn-outline-success" name="landlord">
 				</form>
 			</div>
@@ -96,7 +98,6 @@
 				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
 
-			echo $area;
 		}else{
 			echo "<center><p>Please fill all fields !</center>";
 		}
@@ -105,7 +106,13 @@
 			$fn_ln = $_POST['fn_ln'];
 			$phone_num = $_POST['phone_num'];
 			$personal_num = $_POST['personal_num'];
-			echo "<center>New record created successfully</center>";
+
+			$sql = "INSERT INTO landlords (fn_ln, phone_num, personal_num) VALUES ('".$fn_ln."', '".$phone_num."', '".$phone_num."')";
+			if ($con->query($sql) === TRUE){
+				echo "<center>New record created successfully</center>";
+			}else{
+				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
+			}
 		}else{
 			echo "<center><p>Please fill all fields !</center>";
 		}
