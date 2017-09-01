@@ -28,28 +28,33 @@
 
 			<div id = "contract" style = "display: none; width: 30%;">
 				<form method = "POST">
-					<input type = "text" class="form-control" name = "type" placeholder = "Type"><br>
+					<select class="form-control" name = "type">
+						<option value="" disabled selected>Type</option>
+						<option value = "Rent">Rent</option>
+						<option value = "Property">Property</option>
+					<select><br>
+					<!--<input type = "text" class="form-control" name = "type" placeholder = "Type">-->
 					<input type = "text" class="form-control" name = "start_date" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" placeholder = "Start date"><br>
 					<input type = "text" class="form-control" name = "end_date" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" placeholder = "End date"><br>
 					<input type = "number" class="form-control" step="0.01" name = "rent_per_decare" min = "0" placeholder = "Rent per decare"><br>
 					<input type = "number" class="form-control" step="0.01" name = "price" min = "0" placeholder = "Price"><br>
-					<input type="submit" name="contract">
+					<input type="submit" class="btn btn-outline-success" name="contract">
 				</form>
 			</div>
 
-			<div id = "land" style = "display: none;">
+			<div id = "land" style = "display: none;  width: 30%;">
 				<form method = "POST">
-					<input type = "number" name = "area" min = "0" placeholder = "Area"><br>
-					<input type="submit" name="land">
+					<input type = "number" class="form-control" name = "area" min = "0" placeholder = "Area"><br>
+					<input type="submit" class="btn btn-outline-success" name="land">
 				</form>
 			</div>
 
-			<div id = "landlord" style = "display: none;">
+			<div id = "landlord" style = "display: none;  width: 30%;">
 				<form method = "POST">
-					<input type = "text" name = "fn_ln" placeholder = "First and last name"><br>
-					<input type = "number" name = "phone_num" min = "0" placeholder = "Phone number"><br>
-					<input type = "number" name = "personal_num" min = "0" placeholder = "Personal number"><br>
-					<input type="submit" name="landlord">
+					<input type = "text" class="form-control" name = "fn_ln" placeholder = "First and last name"><br>
+					<input type = "number" class="form-control" name = "phone_num" min = "0" placeholder = "Phone number"><br>
+					<input type = "number" class="form-control" name = "personal_num" min = "0" placeholder = "Personal number"><br>
+					<input type="submit" class="btn btn-outline-success" name="landlord">
 				</form>
 			</div>
 			<br>
@@ -73,15 +78,12 @@
 
 			$sql = "INSERT INTO contracts (type, start_date, end_date, rent_per_decare, price) VALUES ('".$type."', '".$start_date."', '".$end_date."', ".$rent_per_decare.", ".$price.")";
 			if ($con->query($sql) === TRUE){
-				echo "New record created successfully";
+				echo "<center>New record created successfully</center>";
 			}else{
-				echo "Error: " . $sql . "<br>" . $con->error;
+				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
-
-			echo "<p>good</p>";
-			echo $type, $start_date, $end_date, $rent_per_decare, $price;
 		}else{
-			echo "<p>Please fill all fields !";
+			echo "<center><p>Please fill all fields !</center>";
 		}
 	}else if(isset($_POST['land'])){
 		if(!empty($_POST['area'])){
@@ -89,22 +91,22 @@
 			$area = $_POST['area'];
 			$sql = "INSERT INTO lands (area) VALUES (".$area.")";
 			if ($con->query($sql) === TRUE){
-				echo "New record created successfully";
+				echo "<center>New record created successfully</center>";
 			}else{
-				echo "Error: " . $sql . "<br>" . $con->error;
+				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
 
 			echo $area;
 		}else{
-			echo "<p>Please fill all fields !";
+			echo "<center><p>Please fill all fields !</center>";
 		}
 	}else if(isset($_POST['landlord'])){
 		if(!empty($_POST['fn_ln']) && !empty($_POST['phone_num']) && !empty($_POST['personal_num'])){
 			$fn_ln = $_POST['fn_ln'];
 			$phone_num = $_POST['phone_num'];
 			$personal_num = $_POST['personal_num'];
-			echo $fn_ln, $phone_num, $personal_num;
+			echo "<center>New record created successfully</center>";
 		}else{
-			echo "<p>Please fill all fields !";
+			echo "<center><p>Please fill all fields !</center>";
 		}
 	}
