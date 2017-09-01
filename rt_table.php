@@ -7,7 +7,7 @@
 
 	function show_rents($con){
 		$sql = "SELECT DISTINCT contracts.id as id, contracts.start_date as sdate, contracts.end_date as edate, lands.id as l_id, lands.area as area, landlords.fn_ln as owner, contracts.price as price, lands.contracts_id as c_id
-		FROM contracts, lands, landlords WHERE lands.contracts_id = contracts.id /*OR lands.contracts_id IS NULL ORDER BY area*/";
+		FROM contracts, lands, landlords WHERE lands.contracts_id = contracts.id AND lands.id = landlords.lands_id /*OR lands.contracts_id IS NULL ORDER BY area*/";
 		echo "<center><table class = 'table' style = 'width: 40%;'><thead class = 'thead-inverse'><tr><th>Contract ID</th><th>Start Date</th><th>End Date</th><th>Area ID</th><th>Area</th><th>Owner</th><th>Price</th></tr></thead><tbody>";
 		$result = $con->query($sql);
 		if($result->num_rows > 0) {
