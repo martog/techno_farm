@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time:  2 септ 2017 в 12:02
+-- Generation Time:  2 септ 2017 в 18:18
 -- Версия на сървъра: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -65,8 +65,8 @@ CREATE TABLE `landlords` (
 
 INSERT INTO `landlords` (`id`, `fn_ln`, `phone_num`, `personal_num`, `lands_id`) VALUES
 (9, 'Martin Grigorov', '0894466198', 894466198, 20),
-(10, 'Nov Sum', '0898989899', 898989899, 21),
-(11, 'Ne sum nov, pran sum s pervol', '08999999', 8999999, 21);
+(12, 'Nov Sum', '08999999', 8999999, 20),
+(13, 'Ne sum nov, pran sum s pervol', '08999999887', 2147483647, 22);
 
 -- --------------------------------------------------------
 
@@ -86,8 +86,8 @@ CREATE TABLE `lands` (
 
 INSERT INTO `lands` (`id`, `area`, `contracts_id`) VALUES
 (20, 6987.39, 21),
-(21, 9880.75, 22),
-(22, 3658.37, 21);
+(22, 3658.37, 21),
+(23, 9893.32, 22);
 
 --
 -- Indexes for dumped tables
@@ -126,12 +126,12 @@ ALTER TABLE `contracts`
 -- AUTO_INCREMENT for table `landlords`
 --
 ALTER TABLE `landlords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `lands`
 --
 ALTER TABLE `lands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- Ограничения за дъмпнати таблици
 --
