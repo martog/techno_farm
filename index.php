@@ -47,11 +47,11 @@
 			<div id = "land" style = "display: none;  width: 30%;">
 				<form method = "POST">
 					<input type = "number" class="form-control" step="0.01" name = "area" min = "0" placeholder = "Area"><br>
-					<p>Add this area to contract</p>
+					<p>Add this area to a contract</p>
 					<select name="contracts_id"  class="form-control">
 					<option value="" disabled selected>Contract ID</option>
 					<?php
-						$sql = "SELECT id FROM contracts";
+						$sql = "SELECT id FROM contracts ORDER BY id";
 						$result = $con->query($sql);
 						if ($result->num_rows > 0) {
 							while($row = $result->fetch_assoc()) {
@@ -69,6 +69,19 @@
 					<input type = "text" class="form-control" name = "fn_ln" placeholder = "First and last name"><br>
 					<input type = "text" class="form-control" name = "phone_num" min = "0" placeholder = "Phone number"><br>
 					<input type = "text" class="form-control" name = "personal_num" min = "0" placeholder = "Personal number"><br>
+					<p>Add this landlord to an area</p>
+					<select name="lands_id" class="form-control">
+					<option selected = "selected" value>Area ID</option>
+					<?php
+						$sql = "SELECT id FROM lands ORDER BY id";
+						$result = $con->query($sql);
+						if ($result->num_rows > 0) {
+							while($row = $result->fetch_assoc()) {
+								echo "<option value='".$row["id"]."'>". $row["id"]."</option>";
+							}
+						}
+					?>
+					</select><br>
 					<input type="submit" class="btn btn-outline-success" name="landlord">
 				</form>
 			</div>
@@ -121,8 +134,9 @@
 			$fn_ln = $_POST['fn_ln'];
 			$phone_num = $_POST['phone_num'];
 			$personal_num = $_POST['personal_num'];
+			$lands_id = $_POST['lands_id'];
 
-			$sql = "INSERT INTO landlords (fn_ln, phone_num, personal_num) VALUES ('".$fn_ln."', '".$phone_num."', '".$phone_num."')";
+			$sql = "INSERT INTO landlords (fn_ln, phone_num, personal_num, lands_id) VALUES ('".$fn_ln."', '".$phone_num."', '".$phone_num."', ".$lands_id.")";
 			if ($con->query($sql) === TRUE){
 				echo "<center>New record created successfully</center>";
 			}else{
