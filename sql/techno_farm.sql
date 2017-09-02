@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time:  1 септ 2017 в 23:39
+-- Generation Time:  2 септ 2017 в 12:02
 -- Версия на сървъра: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -42,8 +42,8 @@ CREATE TABLE `contracts` (
 --
 
 INSERT INTO `contracts` (`id`, `type`, `start_date`, `end_date`, `rent_per_decare`, `price`) VALUES
-(13, 'Rent', '2017-09-01', '2017-10-05', 5.32, 37.1),
-(14, 'Property', '2017-09-18', '2017-11-30', 1.1, 98.7);
+(21, 'Rent', '2017-01-03', '2017-01-18', 35.5, 699.59),
+(22, 'Property', '2017-09-01', '2018-12-31', 10536.37, 5670.99);
 
 -- --------------------------------------------------------
 
@@ -64,8 +64,9 @@ CREATE TABLE `landlords` (
 --
 
 INSERT INTO `landlords` (`id`, `fn_ln`, `phone_num`, `personal_num`, `lands_id`) VALUES
-(4, 'Martin Grigorov', '0894466198', 894466198, 13),
-(5, 'ASD DSA', '324234234', 324234234, NULL);
+(9, 'Martin Grigorov', '0894466198', 894466198, 20),
+(10, 'Nov Sum', '0898989899', 898989899, 21),
+(11, 'Ne sum nov, pran sum s pervol', '08999999', 8999999, 21);
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,9 @@ CREATE TABLE `lands` (
 --
 
 INSERT INTO `lands` (`id`, `area`, `contracts_id`) VALUES
-(13, 5, 14),
-(14, 8, 13),
-(15, 5.6, NULL);
+(20, 6987.39, 21),
+(21, 9880.75, 22),
+(22, 3658.37, 21);
 
 --
 -- Indexes for dumped tables
@@ -120,17 +121,17 @@ ALTER TABLE `lands`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `landlords`
 --
 ALTER TABLE `landlords`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `lands`
 --
 ALTER TABLE `lands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- Ограничения за дъмпнати таблици
 --

@@ -22,6 +22,7 @@
 ?>
 
 <html>
+
 	<head>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.12/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
@@ -33,11 +34,11 @@
 				$('#table1').DataTable();
 			});
 		</script>
-		
 	</head>
+
 	<body>
 		<center><img src = "img/logo.jpg"><br>
-		<div id = "container" style = "width:40%">
+		<div id = "container" style = "width:50%">
 		<?php
 			show_lands($con);
 		?>
@@ -46,4 +47,5 @@
 		<a href = "index.php" class="btn btn-outline-primary">Go to Home page ></a>
 		</center>
 	</body>
+
 </html>
