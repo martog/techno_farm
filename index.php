@@ -73,7 +73,7 @@
 					<select name="lands_id" class="form-control">
 					<option selected = "selected" value>Area ID</option>
 					<?php
-						$sql = "SELECT id FROM lands ORDER BY id";
+						$sql = "SELECT DISTINCT lands.id FROM lands, contracts WHERE contracts.type = 'Rent' AND lands.contracts_id = contracts.id  ORDER BY id";
 						$result = $con->query($sql);
 						if ($result->num_rows > 0) {
 							while($row = $result->fetch_assoc()) {
