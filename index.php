@@ -47,6 +47,19 @@
 			<div id = "land" style = "display: none;  width: 30%;">
 				<form method = "POST">
 					<input type = "number" class="form-control" step="0.01" name = "area" min = "0" placeholder = "Area"><br>
+					<p>Add this area to contract</p>
+					<select name="contracts_id"  class="form-control">
+					<option value="" disabled selected>Contract ID</option>
+					<?php
+						$sql = "SELECT id FROM contracts";
+						$result = $con->query($sql);
+						if ($result->num_rows > 0) {
+							while($row = $result->fetch_assoc()) {
+								echo "<option value='".$row["id"]."'>". $row["id"]."</option>";
+							}
+						}
+					?>
+					</select><br>
 					<input type="submit" class="btn btn-outline-success" name="land">
 				</form>
 			</div>
@@ -84,20 +97,22 @@
 			}else{
 				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
+			echo "<meta http-equiv='refresh' content='0'>";
 		}else{
 			echo "<center><p>Please fill all fields !</center>";
 		}
-	}else if(isset($_POST['land'])){
-		if(!empty($_POST['area'])){
 
+	}else if(isset($_POST['land'])){
+		if(!empty($_POST['area']) && !empty($_POST['contracts_id'])){
+			$contracts_id = $_POST['contracts_id'];
 			$area = $_POST['area'];
-			$sql = "INSERT INTO lands (area) VALUES (".$area.")";
+			$sql = "INSERT INTO lands (area, contracts_id) VALUES (".$area.", ".$contracts_id.")";
 			if ($con->query($sql) === TRUE){
 				echo "<center>New record created successfully</center>";
 			}else{
 				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
-
+			echo "<meta http-equiv='refresh' content='0'>";
 		}else{
 			echo "<center><p>Please fill all fields !</center>";
 		}
@@ -113,6 +128,7 @@
 			}else{
 				echo "<center>Error: " . $sql . "<br>" . $con->error."</center>";
 			}
+			echo "<meta http-equiv='refresh' content='0'>";
 		}else{
 			echo "<center><p>Please fill all fields !</center>";
 		}
